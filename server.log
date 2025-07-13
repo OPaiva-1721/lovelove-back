@@ -1,0 +1,48 @@
+nohup: ignoring input
+ * Serving Flask app 'main'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://169.254.0.21:5000
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 862-147-211
+127.0.0.1 - - [12/Jul/2025 09:58:18] "GET /api/relationship HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:03:53] "GET /api/relationship HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:03:53] "GET /api/photos/featured HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:03:53] "GET /api/relationship HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:03:53] "GET /api/photos/featured HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:04:21] "GET /api/posts HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:04:21] "GET /api/posts HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:04:21] "GET /static/uploads/casal_2.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:04:21] "GET /static/uploads/casal_3.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:04:21] "GET /static/uploads/casal_1.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:04:40] "OPTIONS /api/posts/2/like HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:04:40] "PUT /api/posts/2/like HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:04:40] "GET /api/posts HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:05:38] "OPTIONS /api/posts HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:05:38] "[35m[1mPOST /api/posts HTTP/1.1[0m" 201 -
+127.0.0.1 - - [12/Jul/2025 10:05:38] "GET /api/posts HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:06:01] "GET /api/relationship HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:06:01] "GET /api/photos/featured HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:06:01] "GET /api/relationship HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:06:01] "GET /api/photos/featured HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:06:25] "GET /api/messages HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:06:25] "GET /api/messages HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:06:50] "OPTIONS /api/messages HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:06:50] "[35m[1mPOST /api/messages HTTP/1.1[0m" 201 -
+127.0.0.1 - - [12/Jul/2025 10:06:50] "GET /api/messages HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:16:51] "OPTIONS /api/relationship HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:16:51] "OPTIONS /api/photos/featured HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:16:51] "GET /api/relationship HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:16:51] "GET /api/photos/featured HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:17:05] "OPTIONS /api/posts HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:17:05] "GET /api/posts HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:17:05] "OPTIONS /static/uploads/casal_2.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:17:05] "OPTIONS /static/uploads/casal_1.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:17:05] "OPTIONS /static/uploads/casal_3.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jul/2025 10:17:05] "[33mGET /static/uploads/casal_2.jpg HTTP/1.1[0m" 404 -
+127.0.0.1 - - [12/Jul/2025 10:17:05] "[33mGET /static/uploads/casal_1.jpg HTTP/1.1[0m" 404 -
+127.0.0.1 - - [12/Jul/2025 10:17:05] "[33mGET /static/uploads/casal_3.jpg HTTP/1.1[0m" 404 -
