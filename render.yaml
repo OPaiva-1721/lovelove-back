@@ -20,11 +20,11 @@ services:
       - key: DB_HOST
         value: lovelove-db.internal
       - key: DB_PORT
-        value: 5432
+        value: 3306
       - key: DB_NAME
         value: lovelove
       - key: SQLALCHEMY_DATABASE_URI
-        value: postgresql://lovelove_user:${DB_PASSWORD}@lovelove-db.internal:5432/lovelove
+        value: mysql+pymysql://lovelove_user:${DB_PASSWORD}@lovelove-db.internal:3306/lovelove
 
 databases:
   - name: lovelove-db
