@@ -25,3 +25,40 @@ class Relationship(db.Model):
         if self.start_date:
             return (datetime.now() - self.start_date).days
         return 0
+    
+    def time_together_detailed(self):
+        """Calcula o tempo detalhado que estão juntos (anos, meses, dias, horas, minutos, segundos)"""
+        if not self.start_date:
+            return {
+                'years': 0,
+                'months': 0,
+                'days': 0,
+                'hours': 0,
+                'minutes': 0,
+                'seconds': 0
+            }
+        
+        now = datetime.now()
+        diff = now - self.start_date
+        
+        # Cálculo de anos, meses e dias
+        years = diff.days // 365
+        remaining_days = diff.days % 365
+        
+        # Aproximação simples para meses (30 dias por mês)
+        months = remaining_days // 30
+        days = remaining_days % 30
+        
+        # Horas, minutos e segundos
+        hours = diff.seconds // 3600
+        minutes = (diff.seconds % 3600) // 60
+        seconds = diff.seconds % 60
+        
+        return {
+            'years': years,
+            'months': months,
+            'days': days,
+            'hours': hours,
+            'minutes': minutes,
+            'seconds': seconds
+        }

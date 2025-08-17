@@ -22,7 +22,8 @@ def get_relationship_info():
     
     return jsonify({
         'relationship': relationship.to_dict(),
-        'days_together': relationship.days_together()
+        'days_together': relationship.days_together(),
+        'time_together_detailed': relationship.time_together_detailed()
     })
 
 @relationship_bp.route('/relationship', methods=['PUT'])
@@ -53,5 +54,6 @@ def update_relationship():
     
     return jsonify({
         'relationship': relationship.to_dict(),
-        'days_together': relationship.days_together()
+        'days_together': relationship.days_together(),
+        'time_together_detailed': relationship.time_together_detailed()
     })
