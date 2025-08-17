@@ -40,9 +40,10 @@ from src.models.post import Post
 from src.models.message import Message
 from src.models.relationship import Relationship
 
-# Criação das tabelas no banco de dados
-with app.app_context():
-    db.create_all()
+# Criação das tabelas no banco de dados (apenas se não estiver em produção)
+if not os.getenv('RENDER'):
+    with app.app_context():
+        db.create_all()
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
