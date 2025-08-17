@@ -14,7 +14,7 @@ services:
       - key: JWT_SECRET_KEY
         generateValue: true
       - key: SQLALCHEMY_DATABASE_URI
-        value: postgresql://lovelove_user:${DB_PASSWORD}@lovelove-db.internal:5432/lovelove
+        value: postgresql+psycopg://lovelove_user:${DB_PASSWORD}@lovelove-db.internal:5432/lovelove
 
 databases:
   - name: lovelove-db
