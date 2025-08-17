@@ -1,0 +1,52 @@
+services:
+  # Banco de dados MySQL
+  db:
+    image: mysql:8.0
+    container_name: lovelove_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: paiva123
+      MYSQL_DATABASE: lovelove
+      MYSQL_USER: lovelove_user
+      MYSQL_PASSWORD: lovelove_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - lovelove_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  # Aplicação Flask
+  app:
+    build: .
+    container_name: lovelove_app
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      - DB_USER=root
+      - DB_PASSWORD=paiva123
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_NAME=lovelove
+      - SECRET_KEY=lovelove#secret$key$2024
+      - JWT_SECRET_KEY=lovelove.jwt.secret.2024
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./src/static/uploads:/app/src/static/uploads
+    networks:
+      - lovelove_network
+    command: ["bash", "start.sh"]
+
+volumes:
+  mysql_data:
+
+networks:
+  lovelove_network:
+    driver: bridge
