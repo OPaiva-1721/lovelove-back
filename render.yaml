@@ -13,18 +13,8 @@ services:
         generateValue: true
       - key: JWT_SECRET_KEY
         generateValue: true
-      - key: DB_USER
-        value: lovelove_user
-      - key: DB_PASSWORD
-        sync: false
-      - key: DB_HOST
-        value: lovelove-db.internal
-      - key: DB_PORT
-        value: 3306
-      - key: DB_NAME
-        value: lovelove
       - key: SQLALCHEMY_DATABASE_URI
-        value: mysql+pymysql://lovelove_user:${DB_PASSWORD}@lovelove-db.internal:3306/lovelove
+        value: postgresql://lovelove_user:${DB_PASSWORD}@lovelove-db.internal:5432/lovelove
 
 databases:
   - name: lovelove-db
