@@ -42,10 +42,33 @@ from src.models.post import Post
 from src.models.message import Message
 from src.models.relationship import Relationship
 
-# Criação das tabelas no banco de dados (apenas se não estiver em produção)
-if not os.getenv('RENDER'):
-    with app.app_context():
+# Criação das tabelas no banco de dados
+with app.app_context():
+    try:
+        print("🗄️  Criando tabelas no banco de dados...")
         db.create_all()
+        
+        # Verifica se já existe um relacionamento
+        from src.models.relationship import Relationship
+        relationship = Relationship.query.first()
+        if not relationship:
+            print("💕 Criando relacionamento padrão...")
+            relationship = Relationship(
+                start_date=datetime(2024, 5, 18, 12, 0, 0),
+                partner1_name="Gabryel",
+                partner2_name="Amabilly",
+                anniversary_message="Nosso amor crescendo a cada dia! ❤️"
+            )
+            db.session.add(relationship)
+            db.session.commit()
+            print("✅ Relacionamento criado com sucesso!")
+        else:
+            print("✅ Relacionamento já existe!")
+            
+        print("🎉 Banco de dados inicializado com sucesso!")
+    except Exception as e:
+        print(f"⚠️  Erro ao inicializar banco: {str(e)}")
+        # Continua mesmo com erro para não quebrar a aplicação
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
