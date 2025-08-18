@@ -43,7 +43,7 @@ def upload_photo():
         timestamp = str(int(datetime.now().timestamp()))
         filename = f"{timestamp}_{filename}"
         
-        upload_folder = os.path.join(current_app.static_folder, 'uploads')
+        upload_folder = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'uploads')
         os.makedirs(upload_folder, exist_ok=True)
         file_path = os.path.join(upload_folder, filename)
         file.save(file_path)
