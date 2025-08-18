@@ -7,6 +7,7 @@ from src.routes.relationship import relationship_bp
 from src.routes.photos import photos_bp
 from src.routes.posts import posts_bp
 from src.routes.messages import messages_bp
+from src.routes.test import test_bp
 from src.extensions import db, bcrypt, jwt
 from src.routes.auth_bp import auth_bp
 
@@ -33,6 +34,7 @@ app.register_blueprint(relationship_bp, url_prefix='/api')
 app.register_blueprint(photos_bp, url_prefix='/api')
 app.register_blueprint(posts_bp, url_prefix='/api')
 app.register_blueprint(messages_bp, url_prefix='/api')
+app.register_blueprint(test_bp, url_prefix='/api')
 
 # Importa todos os modelos para criar as tabelas
 from src.models.photo import Photo
