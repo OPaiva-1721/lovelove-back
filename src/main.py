@@ -19,7 +19,17 @@ from config import Config
 app.config.from_object(Config)
 
 # Habilita CORS para comunicação com frontend
-CORS(app, resources={r"/api/*": {"origins": "*", "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"]}})
+CORS(app, 
+     origins=[
+         "http://localhost:5173",  # Vite/React local
+         "http://127.0.0.1:5173",  # Vite/React local (alternativo)
+         "http://localhost:3000",  # React padrão
+         "http://127.0.0.1:3000",  # React padrão (alternativo)
+         "*"  # Permite todas as origens (fallback)
+     ],
+     methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+     allow_headers=["Content-Type", "Authorization", "X-Requested-With"],
+     supports_credentials=True)
 
 # Configuração do banco de dados e criptografia
 db.init_app(app)
