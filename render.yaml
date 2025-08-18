@@ -3,7 +3,7 @@ services:
     name: lovelove-backend
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn src.main:app
+    startCommand: python init_db.py && gunicorn src.main:app
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
@@ -13,8 +13,10 @@ services:
         generateValue: true
       - key: JWT_SECRET_KEY
         generateValue: true
-      - key: SQLALCHEMY_DATABASE_URI
-        value: postgresql+psycopg2://lovelove_user:${DB_PASSWORD}@lovelove-db.internal:5432/lovelove
+    envFromDatabase:
+      - name: lovelove-db
+        property: connectionString
+        envVar: SQLALCHEMY_DATABASE_URI
 
 databases:
   - name: lovelove-db
