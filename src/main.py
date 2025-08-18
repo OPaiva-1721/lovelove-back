@@ -1,5 +1,6 @@
 import os
 import sys
+from datetime import datetime
 from flask import Flask
 from flask_cors import CORS
 from src.routes.user import user_bp
@@ -46,7 +47,19 @@ from src.models.relationship import Relationship
 with app.app_context():
     try:
         print("🗄️  Criando tabelas no banco de dados...")
+        print(f"🔗 URI do banco: {app.config['SQLALCHEMY_DATABASE_URI'][:50]}...")
+        
+        # Força a criação de todas as tabelas
         db.create_all()
+        print("✅ Tabelas criadas com sucesso!")
+        
+        # Lista as tabelas criadas
+        try:
+            inspector = db.inspect(db.engine)
+            tables = inspector.get_table_names()
+            print(f"📋 Tabelas disponíveis: {', '.join(tables)}")
+        except Exception as e:
+            print(f"⚠️  Não foi possível listar tabelas: {str(e)}")
         
         # Verifica se já existe um relacionamento
         from src.models.relationship import Relationship
@@ -68,6 +81,8 @@ with app.app_context():
         print("🎉 Banco de dados inicializado com sucesso!")
     except Exception as e:
         print(f"⚠️  Erro ao inicializar banco: {str(e)}")
+        import traceback
+        traceback.print_exc()
         # Continua mesmo com erro para não quebrar a aplicação
 
 # Rota raiz para verificar se a API está funcionando

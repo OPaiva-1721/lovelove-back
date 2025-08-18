@@ -8,7 +8,7 @@ class Config:
     SECRET_KEY = os.getenv("SECRET_KEY", "lovelove#secret$key$2024")
     
     # Configuração do banco de dados
-    USER = os.getenv("DB_USER", "root")
+    USER = os.getenv("DB_USER", "postgres")
     PASSWORD = os.getenv("DB_PASSWORD", "paiva123")
     HOST = os.getenv("DB_HOST", "localhost")
     PORT = os.getenv("DB_PORT", "5432")
@@ -19,11 +19,10 @@ class Config:
         # PostgreSQL para Render
         SQLALCHEMY_DATABASE_URI = os.getenv("SQLALCHEMY_DATABASE_URI")
     else:
-        # SQLite para desenvolvimento local (mais simples)
-        db_path = os.path.join(os.path.dirname(__file__), "src", "database", "app.db")
+        # PostgreSQL para desenvolvimento local
         SQLALCHEMY_DATABASE_URI = os.getenv(
             "DATABASE_URL",
-            f"sqlite:///{db_path}"
+            f"postgresql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}"
         )
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
