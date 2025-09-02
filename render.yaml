@@ -17,6 +17,10 @@ services:
         value: production
       - key: FLASK_APP
         value: src.main
+      - key: DATABASE_URL
+        fromDatabase:
+          name: lovelove-db
+          property: connectionString
     envFromDatabase:
       - name: lovelove-db
         property: connectionString

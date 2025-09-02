@@ -16,8 +16,10 @@ class Config:
 
     # Verifica se é PostgreSQL (Render) ou SQLite (local)
     if os.getenv("RENDER"):
-        # PostgreSQL para Render
-        SQLALCHEMY_DATABASE_URI = os.getenv("SQLALCHEMY_DATABASE_URI")
+        # PostgreSQL para Render - usa a variável do Render
+        SQLALCHEMY_DATABASE_URI = os.getenv("SQLALCHEMY_DATABASE_URI") or os.getenv("DATABASE_URL")
+        if not SQLALCHEMY_DATABASE_URI:
+            raise ValueError("SQLALCHEMY_DATABASE_URI ou DATABASE_URL deve ser configurada no Render")
     else:
         # PostgreSQL para desenvolvimento local
         SQLALCHEMY_DATABASE_URI = os.getenv(
@@ -26,4 +28,4 @@ class Config:
         )
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY", "lovelove.jwt.secret.2024")
+    JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY", "lovelove#secret$key$2024")
