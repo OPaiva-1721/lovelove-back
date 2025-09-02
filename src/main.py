@@ -25,6 +25,11 @@ CORS(app,
          "http://127.0.0.1:5173",  # Vite/React local (alternativo)
          "http://localhost:3000",  # React padrão
          "http://127.0.0.1:3000",  # React padrão (alternativo)
+         "https://*.ngrok.io",     # Ngrok HTTPS
+         "https://*.ngrok-free.app", # Ngrok novo domínio
+         "https://*.ngrok.app",    # Ngrok alternativo
+         "https://*.vercel.app",   # Vercel
+         "https://*.onrender.com", # Render
          "*"  # Permite todas as origens (fallback)
      ],
      methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
@@ -111,4 +116,4 @@ def home():
     }
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
